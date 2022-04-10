@@ -1,0 +1,174 @@
+.background-all{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E5E5E5;
+}
+
+.container-home{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.container-home .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.container-home .header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+}
+
+.container-home .header .header-side{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.container-home .header .header-side.align-right{
+    justify-content: flex-end;
+}
+
+.container-home .header .header-side span{
+    font-size: 14px;
+}
+.container-home .header .header-side a{
+    color: currentColor;
+    margin-left: 20px;
+}
+
+.container-home .box-create-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    background-color: #fff;
+    border: 1px solid #999999;
+    width: 100%;
+}
+
+.container-home .box-create-post h5{
+    color: #000;
+    font-size: 22px;
+    margin: 0;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+.container-home .box-create-post p{
+    color: #000;
+    font-size: 15px;
+    margin: 10px 20px;
+}
+
+.container-home .box-create-post input{
+    height: 28px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 0 10px;
+    margin: 0 20px;
+}
+
+.container-home .box-create-post textarea{
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 10px;
+    resize: none;
+    margin: 0 20px;
+}
+
+.container-home .box-create-post button{
+    width: 110px;
+    height: 33px;
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    border: 0;
+    align-self: flex-end;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.container-home .box-create-post button:disabled{
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.container-home .area-posts{
+    width: 100%;  
+}
+
+.container-home .area-posts .post{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 16px;
+    margin-bottom: 40px;
+    background-color: #fff;
+    border: 1px solid #999999;
+}
+
+.container-home .area-posts .post .post-header{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 0 20px
+}
+
+.container-home .area-posts .post .post-header h4{
+    flex: 1;
+}
+
+.container-home .area-posts .post .post-header .area-actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container-home .area-posts .post .post-header .area-actions .btn-action{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-home .area-posts .post .post-content{
+    margin: 20px;
+}
+
+.container-home .area-posts .post .post-content .post-content-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #777;
+    font-size: 14px;
+}
+.container-home .area-posts .post .post-content p{
+    color: #000000;
+    font-size: 14px;
+}
