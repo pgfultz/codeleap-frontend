@@ -148,6 +148,8 @@ function Home() {
     const selectedPage = e.selected;
     const offset = selectedPage * 10;
 
+    setPageOffset(offset);
+
     dispatch(getPosts({offset}));
 };
 
@@ -188,33 +190,35 @@ function Home() {
             </div>
 
             <div className="content">
-              <div className="box-create-post">
-                <h5>What's on your mind?</h5>
-                <p>Title</p>
-                <input 
-                  type="text" 
-                  name="posttitle" 
-                  id="posttitle" 
-                  placeholder='Hello world'
-                  value={postTitle}
-                  onChange={(e) => setPostTitle(e.target.value)}
-                />
-                <p>Content</p>
-                <textarea 
-                  name="postcontent" 
-                  id="postcontent" 
-                  placeholder='Content here'
-                  rows={5}
-                  value={postContent}
-                  onChange={(e) => setPostContent(e.target.value)}
-                />
-                <button 
-                  onClick={handlePost} 
-                  disabled={postTitle.length > 0 && postContent.length > 0 ? false : true}
-                >
-                  CREATE
-                </button>
-              </div>
+              {pageOffset == 0 && (
+                <div className="box-create-post">
+                  <h5>What's on your mind?</h5>
+                  <p>Title</p>
+                  <input 
+                    type="text" 
+                    name="posttitle" 
+                    id="posttitle" 
+                    placeholder='Hello world'
+                    value={postTitle}
+                    onChange={(e) => setPostTitle(e.target.value)}
+                  />
+                  <p>Content</p>
+                  <textarea 
+                    name="postcontent" 
+                    id="postcontent" 
+                    placeholder='Content here'
+                    rows={5}
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
+                  />
+                  <button 
+                    onClick={handlePost} 
+                    disabled={postTitle.length > 0 && postContent.length > 0 ? false : true}
+                  >
+                    CREATE
+                  </button>
+                </div>
+              )}
 
               <div className="area-posts">
                 {postData != null ? (

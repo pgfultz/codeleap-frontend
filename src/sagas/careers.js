@@ -35,7 +35,7 @@ export function* watchDeleteData() {
 
 export function* getData(action) {
     try {
-        const response = yield call(getDataApi, action.payload);
+        const response = yield call(getDataApi, action ? action.payload : {offset: 0});
   
         if (response.ok) {
             const payload =
