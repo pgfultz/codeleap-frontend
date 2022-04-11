@@ -8,6 +8,12 @@ export const EDIT_POSTS_REDUCER = "EDIT_POSTS_REDUCER";
 export const DELETE_POSTS_SAGA = "DELETE_POSTS_SAGA";
 export const DELETE_POSTS_REDUCER = "DELETE_POSTS_REDUCER";
 
+export function clearAllReducer() {
+    return {
+      type: CLEAR_ALL_REDUCER
+    };
+}
+
 export function getPosts() {
     return {
       type: GET_POSTS_SAGA
