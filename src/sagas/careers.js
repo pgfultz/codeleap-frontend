@@ -87,7 +87,6 @@ export function* getData() {
   export function* deleteData(action) {
     try {
       const response = yield call(deleteDataApi, action.payload.id);
-      console.log(response);
   
     if (response.ok) {
         const payload =

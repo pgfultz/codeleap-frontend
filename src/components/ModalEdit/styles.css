@@ -1,0 +1,54 @@
+.modal-edit{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.modal-edit p{
+    color: #000;
+    font-size: 16px;
+}
+
+.modal-edit p.title{
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-edit p.p-label{
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.modal-edit input{
+    height: 28px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 0 10px;
+}
+
+.modal-edit textarea{
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 10px;
+    resize: none;
+}
+
+.modal-edit button{
+    width: 120px;
+    padding: 10px;
+    background-color: #000;
+    color: #FFF;
+    font-weight: bold;
+    align-self: flex-end;
+    border: 0;
+    cursor: pointer;
+    margin-top: 24px;
+}
+
+.modal-edit button:hover{
+    opacity: .8;
+}

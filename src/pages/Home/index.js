@@ -13,6 +13,7 @@ import {
 
 import ModalSuccess from '../../components/ModalSuccess';
 import ModalDelete from '../../components/ModalDelete';
+import ModalEdit from '../../components/ModalEdit';
 
 import './styles.css';
 
@@ -22,6 +23,7 @@ function Home() {
 
   const getPostsReducer = useSelector(state => state.getPostsReducer);
   const posttPostsReducer = useSelector(state => state.posttPostsReducer);
+  const editPostsReducer = useSelector(state => state.editPostsReducer);
   const deletePostsReducer = useSelector(state => state.deletePostsReducer);
 
   const [userName, setUserName] = useState(null);
@@ -30,6 +32,9 @@ function Home() {
   const [postData, setPostData] = useState(null);
   const [modalSuccess, setModalSuccess] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editContent, setEditContent] = useState('');
 
   useEffect(() => {
     dispatch(getPosts());
@@ -55,6 +60,14 @@ function Home() {
       //console.log(posttPostsReducer);
     }    
   }, [posttPostsReducer]);
+
+  useEffect(() => {
+    if(editPostsReducer){
+      dispatch(clearAllReducer());
+
+      console.log(editPostsReducer);
+    }    
+  }, [editPostsReducer, dispatch]);
 
   useEffect(() => {
     if(deletePostsReducer){
@@ -100,6 +113,30 @@ function Home() {
     dispatch(clearAllReducer());
 
     setDeleteId(null);
+  }
+
+  function confirmEditPost(){
+    const payload = {
+      id: editId,
+      data: {
+        title: editTitle,
+        content: editContent,
+      }
+    }
+
+    dispatch(editPosts(payload));
+
+    setEditId(null);
+    setEditTitle('');
+    setEditContent('');
+  }
+
+  function closeEditPost(){
+    dispatch(clearAllReducer());
+
+    setEditId(null);
+    setEditTitle('');
+    setEditContent('');
   }
 
   function calcDate(val){
@@ -182,7 +219,14 @@ function Home() {
                               >
                                 <FaTrash size={18} color="#fff" />
                               </div>
-                              <div className="btn-action">
+                              <div
+                                className="btn-action"
+                                onClick={() => {
+                                  setEditId(item.id);
+                                  setEditTitle(item.title);
+                                  setEditContent(item.content)
+                                }}
+                              >
                                 <FaEdit size={20} color="#fff" />
                               </div>
                             </div>
@@ -218,6 +262,17 @@ function Home() {
             closeModal={closeDeletePost}
             confirmModal={confirmDeletePost}
             idPost={deleteId}
+          />
+        )}
+
+        {editId && (
+          <ModalEdit
+            closeModal={closeEditPost}
+            confirmModal={confirmEditPost}
+            editTitle={editTitle}
+            editContent={editContent}
+            setEditTitle={setEditTitle}
+            setEditContent={setEditContent}
           />
         )}
 
