@@ -4,8 +4,8 @@ export const api = create({
     baseURL: "https://dev.codeleap.co.uk/",
 });
 
-export function getDataApi() {
-    return api.get('/careers/');
+export function getDataApi(data) {
+    return api.get(`/careers/?limit=10&offset=${data.offset}`);
 }
 
 export function postDataApi(data) {

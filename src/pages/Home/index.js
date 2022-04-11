@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {FaTrash, FaEdit} from 'react-icons/fa'
 import {useDispatch, useSelector} from 'react-redux';
+import ReactPaginate from 'react-paginate';
 
 import {
   clearAllReducer,
@@ -26,10 +27,12 @@ function Home() {
   const editPostsReducer = useSelector(state => state.editPostsReducer);
   const deletePostsReducer = useSelector(state => state.deletePostsReducer);
 
+  const [pageOffset, setPageOffset] = useState(0);
   const [userName, setUserName] = useState(null);
   const [postTitle, setPostTitle] = useState('');
   const [postContent, setPostContent] = useState('');
   const [postData, setPostData] = useState(null);
+  const [pageCount, setPageCount] = useState(null);
   const [modalSuccess, setModalSuccess] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const [editId, setEditId] = useState(null);
@@ -37,7 +40,7 @@ function Home() {
   const [editContent, setEditContent] = useState('');
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPosts({offset: pageOffset}));
     
     const user = localStorage.getItem('user');
 
@@ -48,6 +51,8 @@ function Home() {
   useEffect(() => {
     if(getPostsReducer){
       setPostData(getPostsReducer.results);
+
+      setPageCount(Math.ceil(getPostsReducer.count / 10));
 
       //console.log(getPostsReducer);
     }    
@@ -65,7 +70,7 @@ function Home() {
     if(editPostsReducer){
       dispatch(clearAllReducer());
 
-      console.log(editPostsReducer);
+      //console.log(editPostsReducer);
     }    
   }, [editPostsReducer, dispatch]);
 
@@ -138,6 +143,13 @@ function Home() {
     setEditTitle('');
     setEditContent('');
   }
+
+  const handlePaginate = (e) => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * 10;
+
+    dispatch(getPosts({offset}));
+};
 
   function calcDate(val){
     const dataAtual = new Date();
@@ -249,6 +261,23 @@ function Home() {
                 )}
               
               </div>
+
+              {pageCount && (
+                <ReactPaginate
+                  previousLabel={"prev"}
+                  nextLabel={"next"}
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePaginate}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"}
+                />
+              )}
+              
             </div>
           </div>
         </div>

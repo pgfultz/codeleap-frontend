@@ -33,9 +33,9 @@ export function* watchDeleteData() {
   yield takeLeading(DELETE_POSTS_SAGA, deleteData);
 }
 
-export function* getData() {
+export function* getData(action) {
     try {
-        const response = yield call(getDataApi);
+        const response = yield call(getDataApi, action.payload);
   
         if (response.ok) {
             const payload =

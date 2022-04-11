@@ -14,9 +14,10 @@ export function clearAllReducer() {
     };
 }
 
-export function getPosts() {
+export function getPosts(payload) {
     return {
-      type: GET_POSTS_SAGA
+      type: GET_POSTS_SAGA,
+      payload
     };
 }
 
